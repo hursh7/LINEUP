@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
 import { TbSoccerField } from 'react-icons/tb';
 import { HiPencil } from 'react-icons/hi';
-import { login, logout, UserStateChange } from '../api/firebase';
 import User from './User';
+import Button from '../shared/Button';
+import { useAuthContext } from './context/AuthContext';
 
 export default function Navbar() {
-  const [user, setUser] = useState<any>();
-
-  useEffect(() => {
-    UserStateChange(setUser);
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   console.log(user);
-
   return (
-    <header className='flex justify-between border-b border-gray-300'>
+    <header className='flex justify-between border-b border-gray-300 p-4'>
       <Link to='/' className='flex items-center text-4xl text-brand'>
         <GiSoccerBall />
         {/* <TbSoccerField /> */}
@@ -24,18 +20,20 @@ export default function Navbar() {
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
         <Link to='/products'>Products</Link>
-        <Link to='/cart'>Carts</Link>
-        <Link to='/products/new' className='text-2xl'>
-          <HiPencil />
-        </Link>
+        {user && <Link to='/cart'>Carts</Link>}
+        {user && user.isAdmin && (
+          <Link to='/products/new' className='text-2xl'>
+            <HiPencil />
+          </Link>
+        )}
         {user && (
           <User photoURL={user.photoURL} displayName={user.displayName} />
         )}
         {!user ? (
-          <button onClick={login}>Login</button>
+          <Button text={'Login'} onClick={login} />
         ) : (
           <>
-            <button onClick={logout}>Logout</button>
+            <Button text={'Logout'} onClick={logout} />
           </>
         )}
       </nav>
