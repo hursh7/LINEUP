@@ -5,7 +5,7 @@ import { TbSoccerField } from 'react-icons/tb';
 import { HiPencil } from 'react-icons/hi';
 import User from './User';
 import Button from '../shared/Button';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Navbar() {
   const { user, login, logout } = useAuthContext();
