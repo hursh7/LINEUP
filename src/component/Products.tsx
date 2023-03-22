@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { getProducts } from '../api/firebase';
+import useProducts from '../hooks/useProducts';
 import ProductCard from './ProductCard';
 
 type IProdcut = {
@@ -19,16 +20,13 @@ type IProdcutProps = {
 
 export default function Products() {
   const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(['products'], getProducts);
+    productsQuery: { isLoading, error, data: products },
+  } = useProducts();
 
-  console.log('products', products);
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      {/* {error && <p>{error}</p>} */}
+      {error && <p>{`${error}`}</p>}
       <ul className='grid grid-cols-1 md:grid-cols-3 lg-gird-cols-4 gap-4 p-4'>
         {products &&
           products.map((product: IProdcutProps | any) => (

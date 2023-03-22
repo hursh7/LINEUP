@@ -75,6 +75,8 @@ export async function getProducts() {
   });
 }
 
+// 장바구니 관련
+
 export async function getCart(userId: string) {
   return get(ref(database, `carts/${userId}`)).then(snapshot => {
     const items = snapshot.val() || {};
@@ -86,6 +88,6 @@ export async function addOrUpdateCart(userId: string, product: any) {
   return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
 
-export async function removeFromCart(userId: string, productId: string) {
+export async function removeFromCart(userId: string, productId: string | any) {
   return remove(ref(database, `carts/${userId}/${productId}`));
 }

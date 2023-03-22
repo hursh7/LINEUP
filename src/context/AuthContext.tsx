@@ -4,7 +4,7 @@ import { login, logout, UserStateChange } from '../api/firebase';
 const AuthContext = createContext<any | undefined>(undefined);
 
 export function AuthContextProvider({ children }: any) {
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     UserStateChange(setUser);
