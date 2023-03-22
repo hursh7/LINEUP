@@ -12,14 +12,14 @@ export default function Navbar() {
   const { user, login, logout } = useAuthContext();
 
   return (
-    <header className='flex justify-between border-b border-gray-300 p-4'>
-      <Link to='/' className='flex items-center text-4xl text-brand'>
-        <GiSoccerBall />
-        {/* <TbSoccerField /> */}
-        <h1>AllThatSoccer</h1>
+    <header className='flex justify-between border-b border-gray-300 py-4'>
+      <Link to='/' className='flex items-center text-3xl text-brand'>
+        <h1 className='ml-1 tracking-tighter'>LINEUP</h1>
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
-        <Link to='/products'>Products</Link>
+        <Link to='/products' className='hover:text-brand'>
+          Products
+        </Link>
         {user && (
           <Link to='/cart'>
             <CartStatus />
@@ -27,7 +27,7 @@ export default function Navbar() {
         )}
         {user && user.isAdmin && (
           <Link to='/products/new' className='text-2xl'>
-            <HiPencil />
+            <HiPencil className='hover:text-brand' />
           </Link>
         )}
         {user && (

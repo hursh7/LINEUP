@@ -27,6 +27,7 @@ export default function Products() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>{`${error}`}</p>}
+      <h2 className='text-center mt-4 text-2xl font-semibold'>Best Item</h2>
       <ul className='grid grid-cols-1 md:grid-cols-3 lg-gird-cols-4 gap-4 p-4'>
         {products &&
           products.map((product: IProdcutProps | any) => (

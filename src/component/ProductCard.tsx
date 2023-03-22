@@ -8,7 +8,7 @@ type IProdcut = {
   description: string;
   image: string;
   price: number;
-  options: number[];
+  options: string[];
 };
 
 type IProdcutProps = {
@@ -17,21 +17,32 @@ type IProdcutProps = {
 
 export default function ProductCard({
   product,
-  product: { id, image, title, price, category },
+  product: { id, image, title, price, category, options },
 }: IProdcutProps) {
   const naviagate = useNavigate();
 
   return (
     <li
       onClick={() => naviagate(`/products/${id}`, { state: { product } })}
-      className='rounded-lg shadow-md overflow-hidden cursor-pointer transition-all hover:scale-105'
+      className='flex flex-col rounded-lg shadow-md overflow-hidden cursor-pointer transition-all'
     >
-      <img className='w-full' src={image} alt={title} />
-      <div className='mt-2 px-2 text-lg flex justify-between items-center'>
-        <h3 className='truncate'>{title}</h3>
-        <p>{`₩${price}`}</p>
+      <div className='flex w-full h-2/3 relative'>
+        <img
+          className='w-full h-full object-cover object-bottom'
+          src={image}
+          alt={title}
+        />
       </div>
-      <p className='mb-2 px-2 text-gray-600'>{category}</p>
+      <div className='mt-2 px-2 flex flex-col'>
+        <div>
+          <p className='text-gray-400 text-sm'>{category}</p>
+          <h3 className='truncate mb-2'>{title}</h3>
+        </div>
+        <p>{`₩${price}`}</p>
+        <ul className='flex gap-2'>
+          {options && options.map(option => <li key={option}>{option}</li>)}
+        </ul>
+      </div>
     </li>
   );
 }

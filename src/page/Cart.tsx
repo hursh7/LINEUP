@@ -30,7 +30,7 @@ export default function Cart() {
   if (isLoading) return <p>Loading...</p>;
 
   const hasProducts = products && products.length > 0;
-  const totalPrice =
+  const totalPrice: any =
     products &&
     products.reduce(
       (prev: any, curr: any) => prev + parseInt(curr.price) * curr.quantity,
@@ -39,9 +39,7 @@ export default function Cart() {
 
   return (
     <section className='p-10 flex flex-col'>
-      <p className='text-2xl text-center font-bold pb-4 border-b border-gray-300'>
-        내 장바구니
-      </p>
+      <p className='text-2xl text-center font-bold pb-4'>장바구니</p>
       {!hasProducts && <p>장바구니에 담긴 상품이 없습니다.</p>}
       {hasProducts && (
         <>
@@ -56,7 +54,7 @@ export default function Cart() {
             <BsFillPlusCircleFill className='shrink-0' />
             <PriceCard text='배송액' price={SHIPPING} />
             <FaEquals className='shrink-0' />
-            <PriceCard text='총가격' price={SHIPPING} />
+            <PriceCard text='총가격' price={SHIPPING + totalPrice} />
           </div>
           <Button text='주문하기' />
         </>

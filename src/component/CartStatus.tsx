@@ -8,9 +8,9 @@ export default function CartStatus() {
   } = useCart();
   return (
     <div className='relative'>
-      <AiOutlineShoppingCart className='text-4xl' />
+      <AiOutlineShoppingCart className='text-3xl' />
       {products && (
-        <p className='w-6 h-6 text-center bg-brand text-white font-bold rounded-full absolute -top-1 -right-2'>
+        <p className='w-5 h-5 text-sm text-center bg-brand text-white font-bold rounded-full absolute -top-1 -right-2'>
           {products.length}
         </p>
       )}
