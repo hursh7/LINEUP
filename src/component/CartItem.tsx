@@ -11,6 +11,7 @@ type IProdcut = {
   image: string;
   price: number;
   option: string;
+  category: string;
 };
 
 type IProdcutProps = {
@@ -22,7 +23,7 @@ const ICON_CLASS =
 
 export default function CartItem({
   product,
-  product: { id, image, title, option, price, quantity },
+  product: { id, image, title, option, price, category, quantity },
 }: IProdcutProps) {
   const { addOrUpdateItem, removeItem } = useCart();
 
@@ -38,12 +39,12 @@ export default function CartItem({
 
   return (
     <li className='flex justify-between my-2 items-center'>
-      <img className='w-24 md:w-48 rounded-lg' src={image} alt={title} />
+      <img className='md:w-32 w-24 rounded-lg' src={image} alt={title} />
       <div className='flex-1 flex justify-between ml-4'>
         <div className='basis-3/5'>
-          <p className='text-lg'>{title}</p>
-          <p className='text-xl font-bold text-brand'>{option}</p>
-          <p>₩{price}</p>
+          <p className='font-semibold'>{`${title} (${option})`} </p>
+          <p className='text-gray-400 mb-2'>{category}</p>
+          <p className='font-semibold text-brand text-lg'>₩{price}</p>
         </div>
         <div className='text-2xl flex items-center'>
           <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus} />

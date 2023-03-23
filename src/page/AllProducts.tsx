@@ -5,7 +5,6 @@ import Products from '../component/Products';
 export default function AllProducts() {
   return (
     <>
-      <Banner />
       <Products />
     </>
   );

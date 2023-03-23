@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import SizeItem from './SizeItem';
 
 type IProdcut = {
   id: string;
@@ -24,23 +25,24 @@ export default function ProductCard({
   return (
     <li
       onClick={() => naviagate(`/products/${id}`, { state: { product } })}
-      className='flex flex-col rounded-lg shadow-md overflow-hidden cursor-pointer transition-all'
+      className='flex flex-col rounded-lg shadow-md overflow-hidden cursor-pointer transition-all h-full'
     >
-      <div className='flex w-full h-2/3 relative'>
+      <div className='flex w-full h-4/5 relative'>
         <img
           className='w-full h-full object-cover object-bottom'
           src={image}
           alt={title}
         />
       </div>
-      <div className='mt-2 px-2 flex flex-col'>
+      <div className='p-4 flex flex-col'>
         <div>
           <p className='text-gray-400 text-sm'>{category}</p>
-          <h3 className='truncate mb-2'>{title}</h3>
+          <h3 className='truncate mb-2 text-lg font-semibold'>{title}</h3>
         </div>
-        <p>{`₩${price}`}</p>
+        <p className='mb-2 text-lg font-bold text-brand tracking-tighter'>{`₩ ${price}`}</p>
         <ul className='flex gap-2'>
-          {options && options.map(option => <li key={option}>{option}</li>)}
+          {options &&
+            options.map(option => <SizeItem key={option} option={option} />)}
         </ul>
       </div>
     </li>

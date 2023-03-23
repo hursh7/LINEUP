@@ -30,6 +30,7 @@ export default function Cart() {
   if (isLoading) return <p>Loading...</p>;
 
   const hasProducts = products && products.length > 0;
+  // const subTotalPrice = products.map(product => product.price)
   const totalPrice: any =
     products &&
     products.reduce(
@@ -38,26 +39,30 @@ export default function Cart() {
     );
 
   return (
-    <section className='p-10 flex flex-col'>
-      <p className='text-2xl text-center font-bold pb-4'>장바구니</p>
+    <section className='p-10 flex flex-col  max-w-screen-2xl mx-auto'>
+      <h2 className='text-3xl text-center font-bold mb-4'>장바구니</h2>
       {!hasProducts && <p>장바구니에 담긴 상품이 없습니다.</p>}
       {hasProducts && (
-        <>
-          <ul className='border-b border-gray-300 mb-8 p-4 px-8'>
+        // <div className='flex justify-between md:flex-row flex-col'>
+        <div className='flex flex-col'>
+          <ul className='mb-8 py-4 flex flex-col gap-5'>
             {products &&
               products.map((product: IProdcutProps | any) => (
                 <CartItem key={product.id} product={product} />
               ))}
           </ul>
-          <div className='flex justify-between items-center mb-6 px-2 md:px-8 lg:px-16'>
+          <div className='flex flex-col bg-gray-200 mb-6 px-2 py-10 md:px-10 px-14'>
+            <p className='text-2xl font-semibold pb-4 mb-4 border-b-2 border-gray-300'>
+              Order Summary
+            </p>
             <PriceCard text='상품 총액' price={totalPrice} />
-            <BsFillPlusCircleFill className='shrink-0' />
+            <div className='mb-1'></div>
             <PriceCard text='배송액' price={SHIPPING} />
-            <FaEquals className='shrink-0' />
-            <PriceCard text='총가격' price={SHIPPING + totalPrice} />
+            <div className='mb-4'></div>
+            <PriceCard text='총가격' price={SHIPPING + totalPrice} isTotal />
+            <Button text='주문하기' colorCode={'bg-brand'} />
           </div>
-          <Button text='주문하기' />
-        </>
+        </div>
       )}
     </section>
   );

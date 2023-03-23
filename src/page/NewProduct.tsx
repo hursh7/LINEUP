@@ -46,7 +46,7 @@ export default function NewProduct() {
   };
 
   return (
-    <section className='w-full text-center'>
+    <section className='w-full text-center max-w-screen-2xl mx-auto'>
       <h2 className='text-2xl font-bold my-4'>새로운 제품 등록</h2>
       {success && <p className='my-2'>✅ {success}</p>}
       {file && (
@@ -104,8 +104,10 @@ export default function NewProduct() {
           required
           onChange={handleChange}
         />
+        <div className='mt-2'></div>
         <Button
           text={isUploading ? '업로드중...' : '제품 등록하기'}
+          colorCode={'bg-brand'}
           disabled={isUploading}
         />
       </form>

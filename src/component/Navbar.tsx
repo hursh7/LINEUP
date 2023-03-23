@@ -12,7 +12,7 @@ export default function Navbar() {
   const { user, login, logout } = useAuthContext();
 
   return (
-    <header className='flex justify-between border-b border-gray-300 py-4'>
+    <header className='flex justify-between border-b border-gray-300 p-4'>
       <Link to='/' className='flex items-center text-3xl text-brand'>
         <h1 className='ml-1 tracking-tighter'>LINEUP</h1>
       </Link>
@@ -34,10 +34,14 @@ export default function Navbar() {
           <User photoURL={user.photoURL} displayName={user.displayName} />
         )}
         {!user ? (
-          <Button text={'Login'} onClick={login} />
+          <button className='hover:text-brand' onClick={login}>
+            Login
+          </button>
         ) : (
           <>
-            <Button text={'Logout'} onClick={logout} />
+            <button className='hover:text-brand' onClick={logout}>
+              Logout
+            </button>
           </>
         )}
       </nav>

@@ -23,6 +23,7 @@ export default function ProductDetail() {
       image,
       title,
       price,
+      category,
       option: selected,
       quantity: 1,
     };
@@ -64,7 +65,11 @@ export default function ProductDetail() {
             </select>
           </div>
           {success && <p className='my-2'>📍 {success}</p>}
-          <Button text='장바구니에 추가' onClick={handleAddCart} />
+          <Button
+            text='장바구니에 추가'
+            colorCode={'bg-brand'}
+            onClick={handleAddCart}
+          />
         </div>
       </section>
     </>

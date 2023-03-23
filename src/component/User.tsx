@@ -13,7 +13,7 @@ export default function User({ photoURL, displayName }: Iuser) {
         src={photoURL}
         alt={displayName}
       />
-      <span className='hidden md:block'>{displayName}</span>
+      <span className='hidden md:block select-none'>{`${displayName} 님`}</span>
     </div>
   );
 }
