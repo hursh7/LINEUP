@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { priceToString } from '../utils/common';
 import SizeItem from './SizeItem';
 
 type IProdcut = {
@@ -39,7 +40,9 @@ export default function ProductCard({
           <p className='text-gray-400 text-sm'>{category}</p>
           <h3 className='truncate mb-2 text-lg font-semibold'>{title}</h3>
         </div>
-        <p className='mb-2 text-lg font-bold text-brand tracking-tighter'>{`₩ ${price}`}</p>
+        <p className='mb-2 text-lg font-bold text-brand tracking-tighter'>
+          ₩{priceToString(price)}
+        </p>
         <ul className='flex gap-2'>
           {options &&
             options.map(option => <SizeItem key={option} option={option} />)}
