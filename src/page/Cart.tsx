@@ -54,7 +54,7 @@ export default function Cart() {
                 />
               ))}
           </ul>
-          <div className='flex flex-col bg-gray-200 mb-6 px-2 py-10 px-10  xl:w-96 xl:ml-20'>
+          <div className='flex flex-col bg-gray-200 mb-6 sm:px-10 px-5 py-10  xl:w-96 xl:ml-20'>
             <p className='text-2xl font-semibold pb-4 mb-4 border-b-2 border-gray-300'>
               Order Summary
             </p>
