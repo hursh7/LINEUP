@@ -1,8 +1,5 @@
 import React from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
-import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai';
-import { HiOutlineXMark } from 'react-icons/hi2';
 import { IoMdClose } from 'react-icons/io';
 import useCart from '../hooks/useCart';
 import { priceToString } from '../utils/common';

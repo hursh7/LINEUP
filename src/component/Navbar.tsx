@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GiSoccerBall } from 'react-icons/gi';
-import { TbSoccerField } from 'react-icons/tb';
 import { HiPencil } from 'react-icons/hi';
 import User from './User';
-import Button from '../shared/Button';
 import { useAuthContext } from '../context/AuthContext';
 import CartStatus from './CartStatus';
 

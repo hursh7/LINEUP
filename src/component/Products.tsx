@@ -21,8 +21,6 @@ export default function Products() {
     productsQuery: { isLoading, error, data: products },
   } = useProducts();
 
-  console.log(products);
-
   return (
     <>
       {isLoading && <p>Loading...</p>}

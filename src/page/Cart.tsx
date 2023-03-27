@@ -1,8 +1,6 @@
 import React from 'react';
 import CartItem from '../component/CartItem';
 import PriceCard from '../component/PriceCard';
-import { BsFillPlusCircleFill } from 'react-icons/bs';
-import { FaEquals } from 'react-icons/fa';
 import Button from '../shared/Button';
 import useCart from '../hooks/useCart';
 
